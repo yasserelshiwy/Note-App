@@ -147,4 +147,7 @@ li {
   .form {
     padding: 20px !important;
   }
+  .nav-logo {
+    margin-left: 3px !important;
+  }
 }

@@ -14,7 +14,7 @@ export default function NavBar() {
           <Container fluid className="container-fluid">
             <Link
               to={"/"}
-              className="text-black ms-5 fs-3 text-decoration-none fw-bold text-2xl d-flex gap-2 justify-content-center align-items-center"
+              className="text-black ms-5 nav-logo fs-3 text-decoration-none fw-bold text-2xl d-flex gap-2 justify-content-center align-items-center"
             >
               <i className="fa-regular fa-note-sticky  fs-1"></i>
               NotesApp
