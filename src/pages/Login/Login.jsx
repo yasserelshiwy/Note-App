@@ -11,6 +11,8 @@ import { Helmet } from "react-helmet";
 export default function Login() {
   let { setToken } = useContext(userContext);
   let [showPass, setShowPss] = useState("password");
+  let [loginField, setLoginField] = useState(null);
+
   let Navigate = useNavigate();
   let passwerdRegex =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
@@ -39,11 +41,13 @@ export default function Login() {
       if (data.msg === "done") {
         setToken(data.token);
         localStorage.setItem("token", data.token);
+
         setTimeout(() => {
           Navigate("/");
         }, 1000);
       }
     } catch (error) {
+      setLoginField(error.response.data.msg);
       console.log(error);
     }
   }
@@ -65,7 +69,7 @@ export default function Login() {
   }
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title> login</title>
         <meta name="description" content="page to login" />
       </Helmet>
@@ -123,6 +127,8 @@ export default function Login() {
               </div>
 
               <button className="btn btn-info w-100"> Login </button>
+              <p className="text-center fs-4 ">{loginField}</p>
+
               <div className=" text-center mt-2">
                 <Link to={"/singup"}> You don't have an account?singup </Link>
               </div>

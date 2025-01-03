@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet";
 export default function SingUp() {
   let Navigate = useNavigate();
   let [showPass, setShowPss] = useState("password");
+  let [signupField, setSignupField] = useState(null);
 
   let passwerdRegex =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
@@ -53,7 +54,8 @@ export default function SingUp() {
         }, 1000);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.msg);
+      setSignupField(error.response.data.msg);
     }
   }
 
@@ -183,6 +185,7 @@ export default function SingUp() {
                 )}
               </div>
               <button className="btn btn-info w-100"> Singup </button>
+              <p className="text-center fs-4 ">{signupField}</p>
               <div className=" text-center mt-2">
                 <Link to={"/login"}> You have an account?login </Link>
               </div>
